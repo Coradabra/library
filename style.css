@@ -1,8 +1,22 @@
 body {
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h3,
+p,
+dialog {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
   display: grid;
   min-height: 100vh;
   grid-template-rows: 3fr 16fr 1fr;
-  margin: 0;
   background: linear-gradient(
     90deg,
     rgb(45, 48, 70) 0%,
@@ -14,9 +28,16 @@ body {
 .nav {
   background-color: rgb(14, 35, 53);
   position: sticky;
+  color: #f3f3f3;
 }
 
-.container {
+button {
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  font-size: 22px;
+}
+
+.library {
   width: 80vw;
   justify-self: center;
   display: grid;
@@ -32,14 +53,10 @@ body {
   margin: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
   color: rgb(202, 214, 224);
   box-shadow: 4px 4px 8px 4px rgba(243, 243, 243, 0.3);
-}
-
-dialog {
-  background-color: aliceblue;
 }
 
 footer {
@@ -47,4 +64,105 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #141111;
+}
+
+.modal {
+  position: absolute;
+  top: calc(50vh - 250px);
+  left: calc(50vw - 200px);
+  border-radius: 2rem;
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+  height: 500px;
+  width: 400px;
+  border: none;
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 2rem;
+  height: calc(500px - 1rem);
+}
+
+.cancel {
+  display: flex;
+  justify-content: flex-end;
+  height: 0;
+  translate: 0 -1rem;
+}
+
+.cancel > span {
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.cancel > span:hover {
+  color: #818181;
+}
+.modal > form > input {
+  height: 2rem;
+  border-radius: 1rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 22px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+input:checked + .slider {
+  background-color: #4ace0c;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4ace0c;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
 }
