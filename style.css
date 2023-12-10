@@ -19,16 +19,21 @@ dialog {
   grid-template-rows: 3fr 16fr 1fr;
   background: linear-gradient(
     90deg,
-    rgb(45, 48, 70) 0%,
-    rgb(60, 54, 85) 50%,
-    rgb(45, 48, 70) 100%
+    rgb(75, 75, 75) 0%,
+    rgb(104, 104, 104) 50%,
+    rgb(75, 75, 75) 100%
   );
 }
 
 .nav {
-  background-color: rgb(14, 35, 53);
+  background-color: rgb(24, 24, 24);
   position: sticky;
   color: #f3f3f3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5vw;
+  box-shadow: 4px 4px 12px 4px rgba(255, 244, 94, 0.3);
 }
 
 button {
@@ -41,12 +46,19 @@ button {
   width: 80vw;
   justify-self: center;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  padding-top: 2rem;
 }
 
 .card {
-  background-color: rgb(26, 46, 83);
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgb(25, 25, 25) 0%,
+    rgb(60, 60, 60) 50%,
+    rgb(25, 25, 25) 100%
+  );
   box-sizing: border-box;
   border-radius: 16px;
   padding: 1rem;
@@ -56,15 +68,42 @@ button {
   justify-content: space-evenly;
   align-items: center;
   color: rgb(202, 214, 224);
-  box-shadow: 4px 4px 8px 4px rgba(243, 243, 243, 0.3);
+  box-shadow: 4px 4px 8px 4px rgba(255, 244, 94, 0.3);
+  transition: 300ms;
+}
+
+.card:hover {
+  box-shadow: 6px 6px 12px 6px rgba(255, 244, 94, 0.5);
+}
+
+.ribbon-wrapper {
+  width: 6rem;
+  height: 6rem;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon-wrapper .ribbon {
+  -webkit-transform: rotate(45deg);
+  background: linear-gradient(0deg, #308807 0%, #4ace0c 50%, #308807 100%);
+  font-size: 16px;
+  color: black;
+  position: relative;
+  text-align: center;
+  padding: 0.5rem 0;
+  top: 1rem;
+  right: 0.5rem;
+  width: 150px;
 }
 
 footer {
-  background-color: rgb(40, 29, 85);
+  background-color: rgb(24, 24, 24);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #141111;
+  color: #e9e9e9;
 }
 
 .modal {
@@ -128,7 +167,6 @@ footer {
   height: 0;
 }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
