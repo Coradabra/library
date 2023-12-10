@@ -1,0 +1,50 @@
+body {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: 3fr 16fr 1fr;
+  margin: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(45, 48, 70) 0%,
+    rgb(60, 54, 85) 50%,
+    rgb(45, 48, 70) 100%
+  );
+}
+
+.nav {
+  background-color: rgb(14, 35, 53);
+  position: sticky;
+}
+
+.container {
+  width: 80vw;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.card {
+  background-color: rgb(26, 46, 83);
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: rgb(202, 214, 224);
+  box-shadow: 4px 4px 8px 4px rgba(243, 243, 243, 0.3);
+}
+
+dialog {
+  background-color: aliceblue;
+}
+
+footer {
+  background-color: rgb(40, 29, 85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
