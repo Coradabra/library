@@ -1,5 +1,5 @@
 const libContainer = document.querySelector(".container");
-const modal = document.querySelector(".modal");
+const modal = document.querySelector("dialog");
 const addBookBtn = document.querySelector("#addBookBtn");
 const formBtn = document.querySelector('')
 

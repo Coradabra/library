@@ -33,13 +33,20 @@ dialog {
   justify-content: space-between;
   align-items: center;
   padding: 0 5vw;
-  box-shadow: 4px 4px 12px 4px rgba(255, 244, 94, 0.3);
+  box-shadow: 4px 4px 12px 4px rgba(255, 244, 94, 0.4);
 }
 
 button {
   padding: 1rem 2rem;
   border-radius: 16px;
   font-size: 22px;
+  background: linear-gradient(0deg, #a89423 0%, #f1ee37 50%, #b4a51f 100%);
+  border: none;
+}
+
+button:hover {
+  box-shadow: 2px 2px 4px 2px rgba(255, 244, 94, 0.4);
+  transition: 300ms;
 }
 
 .library {
@@ -68,12 +75,25 @@ button {
   justify-content: space-evenly;
   align-items: center;
   color: rgb(202, 214, 224);
-  box-shadow: 4px 4px 8px 4px rgba(255, 244, 94, 0.3);
+  box-shadow: 4px 4px 8px 4px rgba(255, 244, 94, 0.4);
   transition: 300ms;
 }
 
 .card:hover {
-  box-shadow: 6px 6px 12px 6px rgba(255, 244, 94, 0.5);
+  box-shadow: 6px 6px 12px 6px rgba(255, 244, 94, 0.6);
+}
+
+.readBtn.read {
+  background: linear-gradient(0deg, #40b40b 0%, #63f022 50%, #3da80b 100%);
+}
+
+.readBtn {
+  background: linear-gradient(
+    0deg,
+    rgb(158, 158, 158) 0%,
+    rgb(228, 228, 228) 50%,
+    rgb(165, 165, 165) 100%
+  );
 }
 
 .ribbon-wrapper {
@@ -87,7 +107,7 @@ button {
 
 .ribbon-wrapper .ribbon {
   -webkit-transform: rotate(45deg);
-  background: linear-gradient(0deg, #308807 0%, #4ace0c 50%, #308807 100%);
+  background: linear-gradient(0deg, #40b40b 0%, #63f022 50%, #3da80b 100%);
   font-size: 16px;
   color: black;
   position: relative;
@@ -175,7 +195,6 @@ footer {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 34px;
 }
@@ -188,7 +207,6 @@ footer {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 34px;
 }
