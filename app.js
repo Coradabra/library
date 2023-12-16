@@ -1,7 +1,7 @@
 const libContainer = document.querySelector(".library");
 const modal = document.querySelector("dialog");
 const addBookBtn = document.querySelector("#addBookBtn");
-const formBtn = document.querySelector("form>button");
+const form = document.querySelector("form");
 const cancelSpan = document.querySelector(".cancel>span");
 
 const DUMMY_BOOK_1 = new Book("The Giant Within", "Tony Robbins", 300, true);
@@ -33,14 +33,6 @@ function Element(element, classList) {
     return newElement;
   };
 }
-
-const cardDiv = new Element("div", "card");
-const titleHeading = new Element("h3", "title");
-const authorHeading = new Element("p", "author");
-const pageCountHeading = new Element("p", "pageCount");
-const readButton = new Element("button", "readBtn");
-const ribbonWrapper = new Element("div", "ribbon-wrapper");
-const ribbonText = new Element("div", "ribbon");
 
 function updateReadStatus(book, buttonNode, ribbonNode, init = false) {
   if (!init) {
@@ -77,6 +69,14 @@ function addBookToLibrary(book) {
   libContainer.appendChild(newBook);
 }
 
+const cardDiv = new Element("div", "card");
+const titleHeading = new Element("h3", "title");
+const authorHeading = new Element("p", "author");
+const pageCountHeading = new Element("p", "pageCount");
+const readButton = new Element("button", "readBtn");
+const ribbonWrapper = new Element("div", "ribbon-wrapper");
+const ribbonText = new Element("div", "ribbon");
+
 myLibrary.forEach((book) => addBookToLibrary(book));
 
 cancelSpan.addEventListener("click", () => {
@@ -84,4 +84,18 @@ cancelSpan.addEventListener("click", () => {
 });
 addBookBtn.addEventListener("click", () => {
   modal.showModal();
+});
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const inputs = event.target;
+
+  const newBook = new Book(
+    inputs.title.value,
+    inputs.author.value,
+    inputs.pageCount.value,
+    inputs.readStatus.checked
+  );
+
+  addBookToLibrary(newBook);
+  modal.close();
 });
