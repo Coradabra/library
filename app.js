@@ -42,24 +42,38 @@ const readButton = new Element("button", "readBtn");
 const ribbonWrapper = new Element("div", "ribbon-wrapper");
 const ribbonText = new Element("div", "ribbon");
 
-function addReadRibbon() {
-  const ribbon = ribbonWrapper.createBookElement("");
-  ribbon.appendChild(ribbonText.createBookElement("READ"));
-  return ribbon;
+function updateReadStatus(book, buttonNode, ribbonNode, init = false) {
+  if (!init) {
+    book.readStatus = !book.readStatus;
+  }
+  if (book.readStatus) {
+    buttonNode.classList.add("read");
+    ribbonNode.hidden = false;
+  } else {
+    buttonNode.classList.remove("read");
+    ribbonNode.hidden = true;
+  }
 }
 
 function addBookToLibrary(book) {
   const newBook = cardDiv.createBookElement("");
 
-  book.readStatus && newBook.appendChild(addReadRibbon());
-
+  const ribbon = ribbonWrapper.createBookElement("");
+  ribbon.appendChild(ribbonText.createBookElement("READ"));
+  newBook.appendChild(ribbon);
   newBook.appendChild(titleHeading.createBookElement(book.title));
   newBook.appendChild(authorHeading.createBookElement(book.author));
   newBook.appendChild(
     pageCountHeading.createBookElement(`${book.pageCount} pages`)
   );
-  newBook.appendChild(readButton.createBookElement("READ"));
 
+  const readBtn = readButton.createBookElement("READ");
+  readBtn.addEventListener("click", () => {
+    updateReadStatus(book, readBtn, ribbon);
+  });
+  newBook.appendChild(readBtn);
+
+  updateReadStatus(book, readBtn, ribbon, true);
   libContainer.appendChild(newBook);
 }
 
