@@ -28,7 +28,9 @@ dialog {
 .nav {
   background-color: rgb(24, 24, 24);
   position: sticky;
-  color: #f3f3f3;
+  font-size: 36px;
+      color: #fddc21;
+  text-shadow: 1px 1px 2px #f1ee37;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,17 +86,22 @@ button:hover {
   box-shadow: 6px 6px 12px 6px rgba(255, 244, 94, 0.6);
 }
 
-.card .read {
+.readBtn.read {
   background: linear-gradient(0deg, #40b40b 0%, #63f022 50%, #3da80b 100%);
 }
 
-.readBtn {
+.readBtn, .removeBtn {
   background: linear-gradient(
     0deg,
     rgb(158, 158, 158) 0%,
     rgb(228, 228, 228) 50%,
     rgb(165, 165, 165) 100%
   );
+}
+
+.removeBtn {
+    font-size: 16px;
+    padding: 0.5rem 1rem;
 }
 
 .ribbon-wrapper {

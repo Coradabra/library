@@ -2,7 +2,7 @@ const libContainer = document.querySelector(".library");
 const modal = document.querySelector("dialog");
 const addBookBtn = document.querySelector("#addBookBtn");
 const form = document.querySelector("form");
-const cancelSpan = document.querySelector(".cancel>span");
+const cancelSpan = document.querySelector(".exitModal");
 
 const DUMMY_BOOK_1 = new Book("The Giant Within", "Tony Robbins", 300, true);
 const DUMMY_BOOK_2 = new Book("The Secret", "Ronda Burnes", 200, true);
@@ -13,14 +13,14 @@ const DUMMY_BOOK_3 = new Book(
   false
 );
 
-const myLibrary = [DUMMY_BOOK_1, DUMMY_BOOK_2, DUMMY_BOOK_3];
+let myLibrary = [DUMMY_BOOK_1, DUMMY_BOOK_2, DUMMY_BOOK_3];
 
 function Book(title, author, pageCount, readStatus) {
+  this.id = "id" + Math.floor(Math.random() * 100000);
   this.title = title;
   this.author = author;
   this.pageCount = pageCount;
   this.readStatus = readStatus;
-  // Create card function?
 }
 
 function Element(element, classList) {
@@ -47,12 +47,20 @@ function updateReadStatus(book, buttonNode, ribbonNode, init = false) {
   }
 }
 
+function removeBookFromLibrary(id) {
+  myLibrary = myLibrary.filter((book) => book.id !== id);
+  const taregetBook = document.querySelector(`#${id}`);
+  libContainer.removeChild(taregetBook);
+}
+
 function addBookToLibrary(book) {
   const newBook = cardDiv.createBookElement("");
+  newBook.id = book.id;
 
   const ribbon = ribbonWrapper.createBookElement("");
   ribbon.appendChild(ribbonText.createBookElement("READ"));
   newBook.appendChild(ribbon);
+
   newBook.appendChild(titleHeading.createBookElement(book.title));
   newBook.appendChild(authorHeading.createBookElement(book.author));
   newBook.appendChild(
@@ -63,7 +71,14 @@ function addBookToLibrary(book) {
   readBtn.addEventListener("click", () => {
     updateReadStatus(book, readBtn, ribbon);
   });
+
+  const removeBtn = removeButton.createBookElement("Remove");
+  removeBtn.addEventListener("click", () => {
+    removeBookFromLibrary(book.id);
+  });
+
   newBook.appendChild(readBtn);
+  newBook.appendChild(removeBtn);
 
   updateReadStatus(book, readBtn, ribbon, true);
   libContainer.appendChild(newBook);
@@ -74,6 +89,7 @@ const titleHeading = new Element("h3", "title");
 const authorHeading = new Element("p", "author");
 const pageCountHeading = new Element("p", "pageCount");
 const readButton = new Element("button", "readBtn");
+const removeButton = new Element("button", "removeBtn");
 const ribbonWrapper = new Element("div", "ribbon-wrapper");
 const ribbonText = new Element("div", "ribbon");
 
