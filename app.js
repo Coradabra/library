@@ -4,16 +4,9 @@ const addBookBtn = document.querySelector("#addBookBtn");
 const form = document.querySelector("form");
 const cancelSpan = document.querySelector(".exitModal");
 
-const DUMMY_BOOK_1 = new Book("The Giant Within", "Tony Robbins", 300, true);
-const DUMMY_BOOK_2 = new Book("The Secret", "Ronda Burnes", 200, true);
-const DUMMY_BOOK_3 = new Book(
-  "Discipline Is Destiny",
-  "Ryan Holiday",
-  367,
-  false
-);
+const DUMMY_BOOK = new Book("Some Book", "Some Author", 300, true);
 
-let myLibrary = [DUMMY_BOOK_1, DUMMY_BOOK_2, DUMMY_BOOK_3];
+let myLibrary = [DUMMY_BOOK];
 
 function Book(title, author, pageCount, readStatus) {
   this.id = "id" + Math.floor(Math.random() * 100000);
